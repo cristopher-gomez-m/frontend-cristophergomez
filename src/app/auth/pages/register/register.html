@@ -1,0 +1,43 @@
+<nz-spin [nzSpinning]="loading" nzTip="Cargando..." class="fullscreen-spinner">
+  <div class="login-container">
+    <form
+      nz-form
+      [formGroup]="registerForm"
+      class="login-form"
+      (ngSubmit)="submitForm()"
+    >
+      <h2 style="text-align:center; margin-bottom: 20px;">Crear cuenta</h2>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor ingresa un email válido">
+          <input nz-input placeholder="Email" formControlName="email" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Por favor ingresa tu contraseña">
+          <input
+            nz-input
+            type="password"
+            placeholder="Contraseña"
+            formControlName="password"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <button
+        nz-button
+        [nzType]="'primary'"
+        class="login-form-button"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Registrando...' : 'Registrarse' }}
+      </button>
+
+      <div class="register-link">
+        <span>¿Ya tienes cuenta?</span>
+        <a [routerLink]="['/auth/login']"> Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</nz-spin>

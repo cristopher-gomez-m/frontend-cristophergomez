@@ -1,0 +1,55 @@
+<div class="login-container">
+  <form
+    nz-form
+    [formGroup]="loginForm"
+    class="login-form"
+    (ngSubmit)="submitForm()"
+  >
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your email!">
+        <nz-input-group>
+          <input
+            type="email"
+            nz-input
+            formControlName="email"
+            placeholder="Email"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Please input your password!">
+        <nz-input-group [nzSuffix]="suffixTemplate">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            nz-input
+            placeholder="contraseña"
+            formControlName="password"
+          />
+        </nz-input-group>
+        <ng-template #suffixTemplate>
+          <i
+            nz-icon
+            [nzType]="showPassword ? 'eye' : 'eye-invisible'"
+            (click)="togglePasswordVisibility()"
+            style="cursor: pointer"
+          ></i>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button
+      nz-button
+      class="login-form-button login-form-margin"
+      [nzType]="'primary'"
+    >
+      Log in
+    </button>
+
+    <div class="register-link">
+      ¿No tienes cuenta?
+      <a (click)="goToRegister()">Regístrate</a>
+    </div>
+  </form>
+</div>

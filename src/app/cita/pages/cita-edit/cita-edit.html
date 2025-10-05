@@ -1,0 +1,107 @@
+<div class="page-container">
+  <nz-card style="max-width: 420px; margin: 40px auto" [nzLoading]="loading">
+    <h2 style="text-align: center; margin-bottom: 16px">Editar Cita</h2>
+
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="fecha">Fecha</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <nz-date-picker
+            id="fecha"
+            [(ngModel)]="fecha"
+            name="fecha"
+            nzFormat="dd/MM/yyyy"
+          ></nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="hora">Hora</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <nz-time-picker
+            id="hora"
+            [(ngModel)]="hora"
+            name="hora"
+            format="HH:mm"
+          ></nz-time-picker>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="clienteId">Cliente</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <nz-select
+            id="clienteId"
+            [(ngModel)]="clienteId"
+            name="clienteId"
+            nzPlaceHolder="Seleccione un cliente"
+          >
+            <nz-option
+              *ngFor="let cliente of clientes"
+              [nzValue]="cliente.id"
+              [nzLabel]="cliente.nombres"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzSpan]="24" style="display: flex; gap: 8px">
+          <nz-select
+            [(ngModel)]="atencionId"
+            name="atencionId"
+            nzPlaceHolder="Selecciona una atención"
+            style="flex: 1"
+          >
+            <nz-option
+              *ngFor="let a of atenciones"
+              [nzValue]="a.id"
+              [nzLabel]="a.nombre"
+            ></nz-option>
+          </nz-select>
+          <button
+            nz-button
+            nzType="dashed"
+            type="button"
+            (click)="agregarDetalle()"
+          >
+            +
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-table
+        *ngIf="detallesExistentes.length + detallesNuevo.length > 0"
+        [nzBordered]="true"
+      >
+        <thead>
+          <tr>
+            <th>Atención</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of detallesExistentes; let i = index">
+            <td>{{ d.nombre || d.atencion.nombre}}</td>
+            <td>{{ d.precio || d.atencion.precio}}</td>
+            <td>
+              <button
+                nz-button
+                nzType="default"
+                nzSize="small"
+                (click)="eliminarDetalleTabla(d)"
+              >
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+
+      <div style="text-align: center; margin-top: 16px">
+        <button nz-button nzType="primary" (click)="save()">Actualizar</button>
+      </div>
+    </form>
+  </nz-card>
+</div>

@@ -1,0 +1,18 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ocupa toda la pantalla */
+  background-color: #f5f5f5; /* fondo suave */
+  padding: 16px; /* evita que se pegue en pantallas pequeñas */
+}
+
+.login-form {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}

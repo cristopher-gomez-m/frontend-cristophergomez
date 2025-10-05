@@ -1,0 +1,69 @@
+<div class="cliente-list-container">
+  <div class="header">
+    <div class="left-controls">
+      <input
+        nz-input
+        placeholder="Buscar cita..."
+        [(ngModel)]="searchText"
+        (keyup.enter)="search()"
+        style="width: 250px; margin-right: 8px"
+      />
+      <button nz-button nzType="primary" (click)="search()">Buscar</button>
+    </div>
+
+    <div class="right-controls">
+      <button nz-button nzType="primary" (click)="goToCreate()">
+        <i nz-icon nzType="plus"></i>
+        Agregar Cita
+      </button>
+    </div>
+  </div>
+
+  <nz-table
+    #clienteTable
+    [nzData]="citas"
+    [nzLoading]="loading"
+    [nzFrontPagination]="false"
+    [nzTotal]="total"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzQueryParams)="onQueryParamsChange($event)"
+  >
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Cliente</th>
+        <th style="width: 150px; text-align: center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.fecha | date: 'dd/MM/yyyy'}}</td>
+        <td>{{ cita.hora }}</td>
+        <td>{{ cita?.cliente?.nombres }}</td>
+        <td style="text-align: center">
+          <button
+            nz-button
+            nzType="link"
+            [routerLink]="['/cita/edit', cita.id]"
+            nzSize="small"
+          >
+            Editar
+          </button>
+          <button
+            nz-button
+            nzSize="small"
+            nzType="default"
+            (click)="deleteCita(cita.id)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="!loading && citas.length === 0">
+        <td colspan="2" style="text-align: center">No hay citas</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

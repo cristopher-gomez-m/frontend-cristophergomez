@@ -1,0 +1,63 @@
+<div class="atencion-list-container">
+  <div class="header">
+    <div class="left-controls">
+      <input
+        nz-input
+        placeholder="Buscar cliente..."
+        [(ngModel)]="searchText"
+        (keyup.enter)="search()"
+        style="width: 250px; margin-right: 8px"
+      />
+      <button nz-button nzType="primary" (click)="search()">Buscar</button>
+    </div>
+
+    <div class="right-controls">
+      <button nz-button nzType="primary" (click)="goToCreate()">
+        <i nz-icon nzType="plus"></i>
+        Agregar Atención
+      </button>
+    </div>
+  </div>
+
+  <nz-table
+    [nzData]="atenciones"
+    [nzLoading]="loading"
+    [nzFrontPagination]="false"
+    [nzTotal]="total"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzQueryParams)="onQueryParamsChange($event)"
+  >
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th style="width: 150px; text-align: center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let atencion of atenciones">
+        <td>{{ atencion.nombre }}</td>
+        <td>{{ atencion.precio }}</td>
+        <td style="text-align: center">
+          <button
+            nz-button
+            nzType="link"
+            [routerLink]="['/atencion/edit', atencion.id]"
+            nzSize="small"
+          >
+            Editar
+          </button>
+          <button
+            nz-button
+            nzSize="small"
+            nzType="default"
+            (click)="deleteAtencion(atencion.id)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

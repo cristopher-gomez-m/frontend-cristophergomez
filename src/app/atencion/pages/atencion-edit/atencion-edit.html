@@ -1,0 +1,25 @@
+<div class="page-container">
+  <div class="login-form">
+    <nz-card nzTitle="Editar Atención" class="shadow-md rounded-xl">
+      <form [formGroup]="atencionForm" (ngSubmit)="save()" nz-form>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="nombre">Nombre</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzErrorTip="Nombre requerido y mínimo 3 caracteres">
+            <input nz-input id="nombre" formControlName="nombre" placeholder="Ingrese el nombre"/>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label [nzSpan]="24" nzFor="precio">Precio</nz-form-label>
+          <nz-form-control [nzSpan]="24" nzErrorTip="Precio requerido y mayor o igual a 0">
+            <input nz-input type="number" id="precio" formControlName="precio" placeholder="Ingrese el precio"/>
+          </nz-form-control>
+        </nz-form-item>
+
+        <div style="text-align: center; margin-top: 16px;">
+          <button nz-button nzType="primary" type="submit">Guardar</button>
+        </div>
+      </form>
+    </nz-card>
+  </div>
+</div>

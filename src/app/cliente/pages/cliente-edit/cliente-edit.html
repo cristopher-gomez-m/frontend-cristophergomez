@@ -1,0 +1,31 @@
+<div class="page-container">
+  <div class="login-form">
+    <h2 style="text-align: center; margin-bottom: 16px">Editar Cliente</h2>
+
+    <form nz-form>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="24" nzFor="nombres">Nombre</nz-form-label>
+        <nz-form-control [nzSpan]="24">
+          <input
+            nz-input
+            id="nombres"
+            [(ngModel)]="nombres"
+            name="nombres"
+            placeholder="Ingrese el nombre"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <div style="text-align: center; margin-top: 16px">
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="loading"
+          (click)="save()"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
