@@ -57,3 +57,9 @@ La carpeta src/environments/ está ignorada en Git para no exponer variables sen
 
 Cada desarrollador debe crear su propio environment.ts usando Angular CLI.
 
+```
+
+Pagina web desplegada: https://front-cristophergomez.pages.dev
+
+
+![alt text](image.png)
