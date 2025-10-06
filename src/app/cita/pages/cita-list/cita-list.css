@@ -1,23 +1,101 @@
-.cliente-list-container {
+.cita-list-container {
   padding: 24px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
+/* ---------- Encabezado ---------- */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+  flex-wrap: wrap; /* permite que se acomode en móviles */
+  gap: 12px;
 }
 
 .left-controls {
   display: flex;
   align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .right-controls {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+}
+
+/* Input de búsqueda */
+.search-input {
+  width: 250px;
+  max-width: 100%;
+}
+
+/* ---------- Tabla ---------- */
+.responsive-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.acciones-header {
+  width: 150px;
+  text-align: center;
+}
+
+.acciones-cell {
+  text-align: center;
+}
+
+/* ---------- Responsividad ---------- */
+@media (max-width: 768px) {
+  .cita-list-container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .left-controls {
+    justify-content: space-between;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .right-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .btn-text {
+    display: none; /* solo ícono en móvil */
+  }
+
+  .acciones-header,
+  .acciones-cell {
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .cita-list-container {
+    padding: 12px;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  button[nz-button] {
+    font-size: 13px;
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
 }

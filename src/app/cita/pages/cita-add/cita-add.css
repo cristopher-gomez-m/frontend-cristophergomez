@@ -1,0 +1,59 @@
+/* Contenedor principal centrado */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+  background-color: #f5f5f5;
+}
+
+/* Tarjeta principal */
+.cita-card {
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Input de ancho completo */
+.full-width {
+  width: 100%;
+}
+
+/* Fila con select + botón */
+.atencion-row {
+  display: flex;
+  gap: 8px;
+}
+
+.atencion-select {
+  flex: 1;
+}
+
+/* Contenedor del botón guardar */
+.btn-guardar-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+  .cita-card {
+    max-width: 100%;
+    padding: 8px;
+  }
+
+  nz-form-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .atencion-row {
+    flex-direction: column;
+  }
+
+  .atencion-row button {
+    width: 100%;
+  }
+}

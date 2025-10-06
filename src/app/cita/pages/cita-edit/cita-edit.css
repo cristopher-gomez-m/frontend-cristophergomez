@@ -1,0 +1,78 @@
+/* Contenedor general centrado */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 24px;
+  background-color: #f5f5f5;
+}
+
+/* Tarjeta principal */
+.cita-card {
+  width: 100%;
+  max-width: 420px;
+  margin: 40px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título centrado */
+.card-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Ancho completo para inputs y selects */
+.full-width {
+  width: 100%;
+}
+
+/* Fila con select + botón */
+.atencion-row {
+  display: flex;
+  gap: 8px;
+}
+
+.atencion-select {
+  flex: 1;
+}
+
+/* Contenedor de tabla scrollable en móvil */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+/* Botón guardar centrado */
+.btn-guardar-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 600px) {
+  .cita-card {
+    margin: 20px auto;
+    padding: 8px;
+  }
+
+  nz-form-label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .atencion-row {
+    flex-direction: column;
+  }
+
+  .atencion-row button {
+    width: 100%;
+  }
+
+  .table-wrapper {
+    margin-top: 12px;
+  }
+}

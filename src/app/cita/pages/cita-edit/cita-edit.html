@@ -1,8 +1,9 @@
 <div class="page-container">
-  <nz-card style="max-width: 420px; margin: 40px auto" [nzLoading]="loading">
-    <h2 style="text-align: center; margin-bottom: 16px">Editar Cita</h2>
+  <nz-card [nzLoading]="loading" class="cita-card">
+    <h2 class="card-title">Editar Cita</h2>
 
     <form nz-form>
+      <!-- Fecha -->
       <nz-form-item>
         <nz-form-label [nzSpan]="24" nzFor="fecha">Fecha</nz-form-label>
         <nz-form-control [nzSpan]="24">
@@ -11,10 +12,12 @@
             [(ngModel)]="fecha"
             name="fecha"
             nzFormat="dd/MM/yyyy"
+            class="full-width"
           ></nz-date-picker>
         </nz-form-control>
       </nz-form-item>
 
+      <!-- Hora -->
       <nz-form-item>
         <nz-form-label [nzSpan]="24" nzFor="hora">Hora</nz-form-label>
         <nz-form-control [nzSpan]="24">
@@ -22,11 +25,13 @@
             id="hora"
             [(ngModel)]="hora"
             name="hora"
-            format="HH:mm"
+            nzFormat="HH:mm"
+            class="full-width"
           ></nz-time-picker>
         </nz-form-control>
       </nz-form-item>
 
+      <!-- Cliente -->
       <nz-form-item>
         <nz-form-label [nzSpan]="24" nzFor="clienteId">Cliente</nz-form-label>
         <nz-form-control [nzSpan]="24">
@@ -35,6 +40,7 @@
             [(ngModel)]="clienteId"
             name="clienteId"
             nzPlaceHolder="Seleccione un cliente"
+            class="full-width"
           >
             <nz-option
               *ngFor="let cliente of clientes"
@@ -45,13 +51,14 @@
         </nz-form-control>
       </nz-form-item>
 
+      <!-- Selección de atención -->
       <nz-form-item>
-        <nz-form-control [nzSpan]="24" style="display: flex; gap: 8px">
+        <nz-form-control [nzSpan]="24" class="atencion-row">
           <nz-select
             [(ngModel)]="atencionId"
             name="atencionId"
             nzPlaceHolder="Selecciona una atención"
-            style="flex: 1"
+            class="atencion-select"
           >
             <nz-option
               *ngFor="let a of atenciones"
@@ -70,36 +77,37 @@
         </nz-form-control>
       </nz-form-item>
 
-      <nz-table
-        *ngIf="detallesExistentes.length + detallesNuevo.length > 0"
-        [nzBordered]="true"
-      >
-        <thead>
-          <tr>
-            <th>Atención</th>
-            <th>Precio</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let d of detallesExistentes; let i = index">
-            <td>{{ d.nombre || d.atencion.nombre}}</td>
-            <td>{{ d.precio || d.atencion.precio}}</td>
-            <td>
-              <button
-                nz-button
-                nzType="default"
-                nzSize="small"
-                (click)="eliminarDetalleTabla(d)"
-              >
-                Eliminar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
+      <!-- Tabla de detalles -->
+      <div class="table-wrapper" *ngIf="detallesExistentes.length + detallesNuevo.length > 0">
+        <nz-table [nzBordered]="true">
+          <thead>
+            <tr>
+              <th>Atención</th>
+              <th>Precio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of detallesExistentes; let i = index">
+              <td>{{ d.nombre || d.atencion.nombre }}</td>
+              <td>{{ d.precio || d.atencion.precio }}</td>
+              <td>
+                <button
+                  nz-button
+                  nzType="default"
+                  nzSize="small"
+                  (click)="eliminarDetalleTabla(d)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
 
-      <div style="text-align: center; margin-top: 16px">
+      <!-- Botón Guardar -->
+      <div class="btn-guardar-container">
         <button nz-button nzType="primary" (click)="save()">Actualizar</button>
       </div>
     </form>
