@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* ocupa toda la pantalla */
+  min-height: 100vh; /* ocupa toda la pantalla */
   background-color: #f5f5f5; /* fondo suave */
   padding: 16px; /* evita que se pegue en pantallas pequeñas */
+  box-sizing: border-box;
 }
 
 .login-form {
@@ -15,4 +16,53 @@
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 1025px) {
+  .login-form {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 12px;
+  }
+
+  .login-form {
+    padding: 24px;
+    max-width: 90%; 
+  }
+
+  .login-form h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* 📱 Móviles pequeños */
+@media (max-width: 480px) {
+  .login-form {
+    padding: 16px;
+    max-width: 100%; 
+  }
+
+  .login-form h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
+
+  nz-form-label {
+    font-size: 0.9rem;
+  }
+
+  input[nz-input] {
+    font-size: 0.95rem;
+  }
+
+  button[nz-button] {
+    width: 100%; 
+    font-size: 1rem;
+  }
 }

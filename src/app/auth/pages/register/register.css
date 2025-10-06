@@ -3,21 +3,54 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 16px; /* Para que no toque los bordes en móviles */
+  box-sizing: border-box;
 }
 
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   min-height: 100vh;
-  min-width: 360px;
 }
 
 .login-form {
   width: 100%;
   max-width: 400px;
+  min-width: 360px;
   padding: 24px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+/* 📱 En pantallas pequeñas: eliminar el min-width para que se adapte */
+@media (max-width: 480px) {
+  .login-form {
+    min-width: auto; /* ❌ Quita el límite mínimo */
+    width: 100%; /* ✅ Que use todo el espacio disponible */
+    padding: 16px;
+  }
+
+  .login-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .register-link {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-form {
+    padding: 12px;
+  }
+
+  .login-form h2 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
 }
