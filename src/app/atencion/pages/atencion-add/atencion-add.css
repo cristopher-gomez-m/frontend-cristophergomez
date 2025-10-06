@@ -2,17 +2,71 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* ocupa toda la pantalla */
-  background-color: #f5f5f5; /* fondo suave */
-  padding: 16px; /* evita que se pegue en pantallas pequeñas */
+  height: 100vh;
+  background-color: #f5f5f5;
+  padding: 16px;
 }
 
-.login-form {
+.form-container {
   width: 100%;
   max-width: 420px;
-  margin: 0 auto;
-  padding: 32px;
-  background: #fff;
-  border-radius: 8px;
+}
+
+.form-card {
+  width: 100%;
+  border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+/* Animación al pasar el mouse */
+.form-card:hover {
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ----------- 🌐 Responsivo ----------- */
+@media (max-width: 768px) {
+  .page-container {
+    align-items: flex-start;
+    height: auto;
+    padding: 24px 12px;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  nz-form-label {
+    font-size: 14px;
+  }
+
+  input[nz-input] {
+    font-size: 14px;
+  }
+
+  .button-container {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-card {
+    box-shadow: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .form-container {
+    max-width: 100%;
+  }
+
+  nz-card {
+    background: #fff;
+    border-radius: 8px;
+  }
 }

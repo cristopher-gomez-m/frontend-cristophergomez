@@ -3,21 +3,102 @@
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  overflow-x: auto; /* evita que la tabla se desborde */
 }
 
+/* Encabezado con controles */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* permite que los elementos bajen */
+  gap: 12px;
   margin-bottom: 16px;
 }
 
 .left-controls {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .right-controls {
   display: flex;
   align-items: center;
+}
+
+/* Escritorio */
+@media (min-width: 769px) {
+  .header {
+    flex-direction: row;
+  }
+
+  .left-controls input[nz-input] {
+    width: 250px;
+  }
+}
+
+/* Tablets y móviles */
+@media (max-width: 768px) {
+  .atencion-list-container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .left-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .left-controls input[nz-input] {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .left-controls button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .right-controls {
+    width: 100%;
+  }
+
+  .right-controls button {
+    width: 100%; /*botón Agregar Atención ocupa todo el ancho */
+  }
+
+  nz-table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    word-break: break-word;
+  }
+}
+
+/* Teléfonos muy pequeños */
+@media (max-width: 400px) {
+  .header {
+    gap: 8px;
+  }
+
+  .left-controls input[nz-input] {
+    font-size: 0.9rem;
+  }
+
+  .right-controls button,
+  .left-controls button {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+  }
 }

@@ -1,26 +1,39 @@
 <div class="page-container">
-  <div class="login-form">
-    <nz-card nzTitle="Agregar Atención" class="shadow-md rounded-xl">
+  <div class="form-container">
+    <nz-card nzTitle="Agregar Atención" class="form-card">
       <form [formGroup]="atencionForm" (ngSubmit)="save()" nz-form>
+        
         <nz-form-item>
           <nz-form-label [nzSpan]="24" nzFor="nombre">Nombre</nz-form-label>
           <nz-form-control [nzSpan]="24" nzErrorTip="Nombre requerido y mínimo 3 caracteres">
-            <input nz-input id="nombre" formControlName="nombre" placeholder="Ingrese el nombre"/>
+            <input
+              nz-input
+              id="nombre"
+              formControlName="nombre"
+              placeholder="Ingrese el nombre"
+            />
           </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
           <nz-form-label [nzSpan]="24" nzFor="precio">Precio</nz-form-label>
           <nz-form-control [nzSpan]="24" nzErrorTip="Precio requerido y mayor o igual a 0">
-            <input nz-input type="number" id="precio" formControlName="precio" placeholder="Ingrese el precio"/>
+            <input
+              nz-input
+              type="number"
+              id="precio"
+              formControlName="precio"
+              placeholder="Ingrese el precio"
+            />
           </nz-form-control>
         </nz-form-item>
 
-        <div style="text-align: center; margin-top: 16px;">
-          <button nz-button nzType="primary" type="submit">Guardar</button>
+        <div class="button-container">
+          <button nz-button nzType="primary" type="submit" [disabled]="atencionForm.invalid">
+            Guardar
+          </button>
         </div>
       </form>
     </nz-card>
   </div>
 </div>
-
