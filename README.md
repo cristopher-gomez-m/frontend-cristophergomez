@@ -61,5 +61,6 @@ Cada desarrollador debe crear su propio environment.ts usando Angular CLI.
 
 Pagina web desplegada: https://front-cristophergomez.pages.dev
 
+para ingresar al sistema,se va a registrarse,se crea una cuenta,un email y una contraseña,con esa cuenta creada podrá navegar en el sistema.
 
 ![alt text](image.png)
